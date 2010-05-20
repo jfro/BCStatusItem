@@ -8,7 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface BCStatusItemAppDelegate : NSObject {
+@interface BCStatusItemAppDelegate : NSObject
+{
     NSWindow *window;
 	NSStatusItem *statusItem;
 	IBOutlet NSMenu *statusMenu;

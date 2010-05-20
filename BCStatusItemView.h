@@ -33,7 +33,15 @@
 + (BCStatusItemView *)viewWithStatusItem:(NSStatusItem *)statusItem;
 - (id)initWithStatusItem:(NSStatusItem *)statusItem;
 
+- (void)setImage:(NSImage *)image;
+- (NSImage *)image;
+
+- (void)setAlternateImage:(NSImage *)image;
+- (NSImage *)alternateImage;
+
 - (void)setDelegate:(id)newDelegate;
 - (id)delegate;
+
+- (void)registerForDraggedTypes:(NSArray *)types;
 
 @end

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02252164115E75CD006F3538 /* status.png in Resources */ = {isa = PBXBuildFile; fileRef = 02252162115E75CD006F3538 /* status.png */; };
+		02252165115E75CD006F3538 /* status-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 02252163115E75CD006F3538 /* status-selected.png */; };
 		022B0A461157B3C700385F13 /* BCStatusItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 022B0A451157B3C700385F13 /* BCStatusItem.m */; };
 		022B0A4B1157B3D400385F13 /* BCStatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 022B0A4A1157B3D400385F13 /* BCStatusItemView.m */; };
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		02252162115E75CD006F3538 /* status.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = status.png; sourceTree = "<group>"; };
+		02252163115E75CD006F3538 /* status-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "status-selected.png"; sourceTree = "<group>"; };
 		022B0A441157B3C700385F13 /* BCStatusItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCStatusItem.h; sourceTree = "<group>"; };
 		022B0A451157B3C700385F13 /* BCStatusItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCStatusItem.m; sourceTree = "<group>"; };
 		022B0A491157B3D400385F13 /* BCStatusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCStatusItemView.h; sourceTree = "<group>"; };
@@ -110,6 +114,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				02252162115E75CD006F3538 /* status.png */,
+				02252163115E75CD006F3538 /* status-selected.png */,
 				8D1107310486CEB800E47090 /* BCStatusItem-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
@@ -174,6 +180,8 @@
 			files = (
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
+				02252164115E75CD006F3538 /* status.png in Resources */,
+				02252165115E75CD006F3538 /* status-selected.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

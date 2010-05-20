@@ -19,4 +19,5 @@
 
 - (NSRect)frame;
 
+- (void)setViewDelegate:(id)delegate;
 @end

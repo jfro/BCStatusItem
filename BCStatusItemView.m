@@ -36,6 +36,30 @@
 	return delegate;
 }
 
+- (void)setImage:(NSImage *)image
+{
+	[image retain];
+	[mImage release];
+	mImage = image;
+}
+
+- (NSImage *)image
+{
+	return mImage;
+}
+
+- (void)setAlternateImage:(NSImage *)image
+{
+	[image retain];
+	[mAlternateImage release];
+	mAlternateImage = image;
+}
+
+- (NSImage *)alternateImage
+{
+	return mAlternateImage;
+}
+
 #pragma mark -
 
 - (void)mouseDown:(NSEvent *)theEvent
@@ -66,16 +90,14 @@
 	{
 		[[NSColor selectedMenuItemColor] set];
 		[NSBezierPath fillRect:[self bounds]];
-		image = [mParentStatusItem alternateImage];
+		image = mAlternateImage;
 	}
 	else
-		image = [mParentStatusItem image];
+		image = mImage;
 	
 	NSRect centeredRect = NSMakeRect(0, 0, [image size].width, [image size].height);
 	centeredRect.origin.x = NSMidX([self bounds]) - ([image size].width / 2);
 	centeredRect.origin.y = NSMidY([self bounds]) - ([image size].height / 2);
-	
-	//NSRect centeredRect = ASWAlignedRectWithSizeInRect([image size], [self bounds], NSImageAlignCenter);
 	[image drawInRect:centeredRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
 }
 
