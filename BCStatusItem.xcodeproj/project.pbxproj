@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		02252164115E75CD006F3538 /* status.png in Resources */ = {isa = PBXBuildFile; fileRef = 02252162115E75CD006F3538 /* status.png */; };
 		02252165115E75CD006F3538 /* status-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 02252163115E75CD006F3538 /* status-selected.png */; };
-		022B0A461157B3C700385F13 /* BCStatusItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 022B0A451157B3C700385F13 /* BCStatusItem.m */; };
+		022B0A461157B3C700385F13 /* NSStatusItem+BCStatusItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 022B0A451157B3C700385F13 /* NSStatusItem+BCStatusItem.m */; };
 		022B0A4B1157B3D400385F13 /* BCStatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 022B0A4A1157B3D400385F13 /* BCStatusItemView.m */; };
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* BCStatusItemAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* BCStatusItemAppDelegate.m */; };
@@ -21,8 +21,8 @@
 /* Begin PBXFileReference section */
 		02252162115E75CD006F3538 /* status.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = status.png; sourceTree = "<group>"; };
 		02252163115E75CD006F3538 /* status-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "status-selected.png"; sourceTree = "<group>"; };
-		022B0A441157B3C700385F13 /* BCStatusItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCStatusItem.h; sourceTree = "<group>"; };
-		022B0A451157B3C700385F13 /* BCStatusItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCStatusItem.m; sourceTree = "<group>"; };
+		022B0A441157B3C700385F13 /* NSStatusItem+BCStatusItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSStatusItem+BCStatusItem.h"; sourceTree = "<group>"; };
+		022B0A451157B3C700385F13 /* NSStatusItem+BCStatusItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSStatusItem+BCStatusItem.m"; sourceTree = "<group>"; };
 		022B0A491157B3D400385F13 /* BCStatusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCStatusItemView.h; sourceTree = "<group>"; };
 		022B0A4A1157B3D400385F13 /* BCStatusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCStatusItemView.m; sourceTree = "<group>"; };
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -56,8 +56,8 @@
 			children = (
 				256AC3D80F4B6AC300CF3369 /* BCStatusItemAppDelegate.h */,
 				256AC3D90F4B6AC300CF3369 /* BCStatusItemAppDelegate.m */,
-				022B0A441157B3C700385F13 /* BCStatusItem.h */,
-				022B0A451157B3C700385F13 /* BCStatusItem.m */,
+				022B0A441157B3C700385F13 /* NSStatusItem+BCStatusItem.h */,
+				022B0A451157B3C700385F13 /* NSStatusItem+BCStatusItem.m */,
 				022B0A491157B3D400385F13 /* BCStatusItemView.h */,
 				022B0A4A1157B3D400385F13 /* BCStatusItemView.m */,
 			);
@@ -194,7 +194,7 @@
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				256AC3DA0F4B6AC300CF3369 /* BCStatusItemAppDelegate.m in Sources */,
-				022B0A461157B3C700385F13 /* BCStatusItem.m in Sources */,
+				022B0A461157B3C700385F13 /* NSStatusItem+BCStatusItem.m in Sources */,
 				022B0A4B1157B3D400385F13 /* BCStatusItemView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

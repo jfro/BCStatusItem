@@ -42,6 +42,6 @@
 - (void)setDelegate:(id)newDelegate;
 - (id)delegate;
 
-- (void)registerForDraggedTypes:(NSArray *)types;
+//- (void)registerForDraggedTypes:(NSArray *)types;
 
 @end

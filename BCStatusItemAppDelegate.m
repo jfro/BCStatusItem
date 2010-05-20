@@ -7,7 +7,7 @@
 //
 
 #import "BCStatusItemAppDelegate.h"
-#import "BCStatusItem.h"
+#import "NSStatusItem+BCStatusItem.h"
 #import "BCStatusItemView.h"
 
 @implementation BCStatusItemAppDelegate

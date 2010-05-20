@@ -1,5 +1,5 @@
 //
-//  BCStatusItem.h
+//  NSStatusItem+BCStatusItem.h
 //  BCStatusItem
 //
 //  Created by Jeremy Knope on 3/22/10.
@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface NSStatusItem(BCStatusItemAdditions)
+@interface NSStatusItem(BCStatusItem)
 
 - (void)setupView;
 
