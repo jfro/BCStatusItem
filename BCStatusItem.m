@@ -37,7 +37,7 @@
 
 - (NSRect)frame
 {
-	return NSZeroRect;
+	return [[[self view] window] frame];
 }
 
 - (void)setViewDelegate:(id)delegate
