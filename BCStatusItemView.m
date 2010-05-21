@@ -11,6 +11,13 @@
 
 @implementation BCStatusItemView
 
+@synthesize doesHighlight=mDoesHighlight;
+@synthesize title=mTitle;
+@synthesize attributedTitle=mAttributedTitle;
+@synthesize image=mImage;
+@synthesize alternateImage=mAlternateImage;
+@synthesize delegate;
+
 + (BCStatusItemView *)viewWithStatusItem:(NSStatusItem *)statusItem
 {
 	return [[[BCStatusItemView alloc] initWithStatusItem:statusItem] autorelease];
@@ -22,48 +29,38 @@
 	if((self = [self initWithFrame:frame]))
 	{
 		mParentStatusItem = statusItem;
+		self.title = nil;
+		self.attributedTitle = nil;
+		self.doesHighlight = NO;
+		self.image = nil;
+		self.alternateImage = nil;
+		self.delegate = nil;
 	}
 	return self;
 }
 
-- (void)setDelegate:(id)newDelegate
-{
-	delegate = newDelegate;
-}
-
-- (id)delegate
-{
-	return delegate;
-}
-
-- (void)setImage:(NSImage *)image
-{
-	[image retain];
-	[mImage release];
-	mImage = image;
-}
-
-- (NSImage *)image
-{
-	return mImage;
-}
-
-- (void)setAlternateImage:(NSImage *)image
-{
-	[image retain];
-	[mAlternateImage release];
-	mAlternateImage = image;
-}
-
-- (NSImage *)alternateImage
-{
-	return mAlternateImage;
-}
+// TODO: setAttributedTitle with default attribtues
+//- (void)setTitle:(NSString *)title
+//{
+//	NSFont *font = [NSFont menuBarFontOfSize:[NSFont systemFontSize] + 2.0f];
+//	NSColor *color = [NSColor controlTextColor];
+//
+//	if(mHighlighted && [self doesHighlight])
+//	{
+//		color = [NSColor selectedMenuItemTextColor];
+//	}
+//
+//	NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:
+//						   font, NSFontAttributeName,
+//						   color, NSForegroundColorAttributeName,
+//						   nil];
+//}
 
 #pragma mark -
 
 - (void)mouseDown:(NSEvent *)theEvent
 {
+	// TODO: implement other behaviors like support for target/action & doubleAction
 	[mParentStatusItem popUpStatusItemMenu:[mParentStatusItem menu]];
 }
 
@@ -85,20 +82,26 @@
 #pragma mark -
 
 - (void)drawRect:(NSRect)dirtyRect {
-	NSImage *image = nil;
-	if(mHighlighted)
+	// TODO: handle image + title, centering the combined rect with image on left
+	NSImage *drawnImage = nil;
+	if(mHighlighted && [self doesHighlight])
 	{
 		[[NSColor selectedMenuItemColor] set];
 		[NSBezierPath fillRect:[self bounds]];
-		image = mAlternateImage;
+		drawnImage = self.alternateImage;
 	}
 	else
-		image = mImage;
+		drawnImage = self.image;
 	
-	NSRect centeredRect = NSMakeRect(0, 0, [image size].width, [image size].height);
-	centeredRect.origin.x = NSMidX([self bounds]) - ([image size].width / 2);
-	centeredRect.origin.y = NSMidY([self bounds]) - ([image size].height / 2);
-	[image drawInRect:centeredRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+	NSRect centeredRect = NSMakeRect(0, 0, [drawnImage size].width, [drawnImage size].height);
+	centeredRect.origin.x = NSMidX([self bounds]) - ([drawnImage size].width / 2);
+	centeredRect.origin.y = NSMidY([self bounds]) - ([drawnImage size].height / 2);
+	[drawnImage drawInRect:centeredRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+	
+	if(self.attributedTitle)
+	{
+		[self.attributedTitle drawInRect:[self bounds]];
+	}
 }
 
 #pragma mark -

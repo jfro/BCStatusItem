@@ -23,24 +23,25 @@
 	NSMenu *mMenu;
 	
 	BOOL mHighlighted;
+	BOOL mDoesHighlight;
 	
 	NSImage *mImage;
 	NSImage *mAlternateImage;
+	NSString *mTitle;
+	NSAttributedString *mAttributedTitle;
 	
 	id<BCStatusItemViewDelegate> delegate;
 }
 
+@property (assign, nonatomic) BOOL doesHighlight;
+@property (copy, nonatomic) NSString *title;
+@property (copy, nonatomic) NSAttributedString *attributedTitle;
+@property (copy, nonatomic) NSImage *image;
+@property (copy, nonatomic) NSImage *alternateImage;
+@property (assign, nonatomic) id<BCStatusItemViewDelegate> delegate;
+
 + (BCStatusItemView *)viewWithStatusItem:(NSStatusItem *)statusItem;
 - (id)initWithStatusItem:(NSStatusItem *)statusItem;
-
-- (void)setImage:(NSImage *)image;
-- (NSImage *)image;
-
-- (void)setAlternateImage:(NSImage *)image;
-- (NSImage *)alternateImage;
-
-- (void)setDelegate:(id)newDelegate;
-- (id)delegate;
 
 //- (void)registerForDraggedTypes:(NSArray *)types;
 

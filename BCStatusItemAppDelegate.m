@@ -17,12 +17,14 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 	NSImage *image = [NSImage imageNamed:@"status"];
 	NSImage *alternateImage = [NSImage imageNamed:@"status-selected"];
-	statusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:[image size].width+10] retain];
+	statusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:[image size].width+40] retain];
 	[statusItem setMenu:statusMenu];
 	[statusItem setImage:image];
 	[statusItem setAlternateImage:alternateImage];
 	[statusItem setHighlightMode:YES];
 	
+	[statusItem setTitle:@"Test"];
+
 	[statusItem setupView];
 	
 	[statusItem setViewDelegate:self];

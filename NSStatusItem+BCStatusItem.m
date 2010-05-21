@@ -14,9 +14,15 @@
 - (void)setupView
 {
 	BCStatusItemView *view = [BCStatusItemView viewWithStatusItem:self];
+	// grab the statu item's various vars that get cleared upon setView:
 	[view setImage:[self image]];
 	[view setAlternateImage:[self alternateImage]];
+	[view setAttributedTitle:[self attributedTitle]];
+	[view setDoesHighlight:[self highlightMode]];
+	
 	[self setView:view];
+	
+	// view becomes delegate for highlighting purposes, this isn't ideal for all cases
 	[[self menu] setDelegate:view];
 }
 
