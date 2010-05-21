@@ -94,6 +94,7 @@
 		drawnImage = self.image;
 	
 	NSRect centeredRect = NSMakeRect(0, 0, [drawnImage size].width, [drawnImage size].height);
+	centeredRect = NSIntegralRect(centeredRect);
 	centeredRect.origin.x = NSMidX([self bounds]) - ([drawnImage size].width / 2);
 	centeredRect.origin.y = NSMidY([self bounds]) - ([drawnImage size].height / 2);
 	[drawnImage drawInRect:centeredRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
