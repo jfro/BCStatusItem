@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class BCStatusItemView;
 
 @interface NSStatusItem(BCStatusItem)
 
@@ -30,4 +31,5 @@
  * Sets the view's delegate, convenience method 
  */
 - (void)setViewDelegate:(id)delegate;
+
 @end

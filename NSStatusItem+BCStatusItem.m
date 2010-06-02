@@ -9,16 +9,21 @@
 #import "NSStatusItem+BCStatusItem.h"
 #import "BCStatusItemView.h"
 
+//@interface NSStatusItem(Private)
+//- (BCStatusItemView *)view;
+//@end
+
+
 @implementation NSStatusItem(BCStatusItem)
 
 - (void)setupView
 {
 	BCStatusItemView *view = [BCStatusItemView viewWithStatusItem:self];
-	// grab the statu item's various vars that get cleared upon setView:
-	[view setImage:[self image]];
-	[view setAlternateImage:[self alternateImage]];
-	[view setAttributedTitle:[self attributedTitle]];
-	[view setDoesHighlight:[self highlightMode]];
+//	// grab the statu item's various vars that get cleared upon setView:
+//	[view setImage:[self image]];
+//	[view setAlternateImage:[self alternateImage]];
+//	[view setAttributedTitle:[self attributedTitle]];
+//	[view setDoesHighlight:[self highlightMode]];
 	
 	[self setView:view];
 	
@@ -49,6 +54,36 @@
 {
 	if([[self view] respondsToSelector:@selector(setDelegate:)])
 		[(BCStatusItemView *)[self view] setDelegate:delegate];
+}
+
+#pragma mark -
+#pragma mark Overrides
+
+// our view replaces all drawing/etc. of NSStatusItem so we forward any related changes on to it
+
+- (void)setImage:(NSImage *)image
+{
+	[(BCStatusItemView *)[self view] setImage:image];
+}
+
+- (void)setAlternateImage:(NSImage *)image
+{
+	[(BCStatusItemView *)[self view] setAlternateImage:image];
+}
+
+- (void)setHighlightMode:(BOOL)highlightMode
+{
+	[(BCStatusItemView *)[self view] setDoesHighlight:highlightMode];
+}
+
+- (void)setTitle:(NSString *)title
+{
+	[(BCStatusItemView *)[self view] setTitle:title];
+}
+
+- (void)setAttributedTitle:(NSAttributedString *)attrTitle
+{
+	[(BCStatusItemView *)[self view] setAttributedTitle:attrTitle];
 }
 
 @end

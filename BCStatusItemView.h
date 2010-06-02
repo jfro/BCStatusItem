@@ -17,7 +17,7 @@
 - (BOOL)statusItemView:(BCStatusItemView *)view performDragOperation:(id <NSDraggingInfo>)info;
 @end
 
-@interface BCStatusItemView : NSView
+@interface BCStatusItemView : NSView<NSMenuDelegate> // TODO: ifdef this for 10.6 only
 {
 	NSStatusItem *mParentStatusItem;
 	NSMenu *mMenu;
