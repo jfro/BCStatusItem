@@ -46,6 +46,7 @@
 
 - (void)dealloc
 {
+	[mParentStatusItem removeObserver:self forKeyPath:@"length"];
 	self.title = nil;
 	self.attributedTitle = nil;
 	self.image = nil;
