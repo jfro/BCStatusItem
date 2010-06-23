@@ -8,6 +8,9 @@
 
 #import "BCStatusItemView.h"
 
+@interface BCStatusItemView(Private)
+- (void)_resizeToFitIfNeeded;
+@end
 
 @implementation BCStatusItemView
 
@@ -25,10 +28,12 @@
 
 - (id)initWithStatusItem:(NSStatusItem *)statusItem
 {
-	NSRect frame = NSMakeRect(0, 0, [statusItem length], [[NSStatusBar systemStatusBar] thickness]);
+    CGFloat length = ([statusItem length] == NSVariableStatusItemLength) ? 32.0f : [statusItem length];
+	NSRect frame = NSMakeRect(0, 0, length, [[NSStatusBar systemStatusBar] thickness]);
 	if((self = [self initWithFrame:frame]))
 	{
 		mParentStatusItem = statusItem;
+		[mParentStatusItem addObserver:self forKeyPath:@"length" options:NSKeyValueObservingOptionNew context:nil];
 		self.title = nil;
 		self.attributedTitle = nil;
 		self.doesHighlight = NO;
@@ -50,12 +55,40 @@
 	[super dealloc];
 }
 
+- (void)_resizeToFitIfNeeded
+{
+    if([mParentStatusItem length] == NSVariableStatusItemLength)
+    {
+        NSRect newFrame = [self frame];
+        newFrame.size.width = [[self image] size].width + 8; // 12 px padding, 6 on each side maybe? not sure what might be the usual
+        [self setFrame:newFrame];
+    }
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+	if(object == mParentStatusItem && [keyPath isEqualToString:@"length"])
+	{
+		if([mParentStatusItem length] != NSVariableStatusItemLength)
+		{
+			NSRect newFrame = [self frame];
+			newFrame.size.width = [mParentStatusItem length];
+			[self setFrame:newFrame];
+		}
+		else
+			[self _resizeToFitIfNeeded];
+	}
+}
+
+#pragma mark -
+
 - (void)setImage:(NSImage *)newImage
 {
 	if(newImage != mImage)
 	{
 		[mImage release];
 		mImage = [newImage copy];
+        [self _resizeToFitIfNeeded];
 		[self setNeedsDisplay:YES];
 	}
 }
@@ -112,7 +145,18 @@
 - (void)mouseDown:(NSEvent *)theEvent
 {
 	// TODO: implement other behaviors like support for target/action & doubleAction
+    mHighlighted = YES;
+    [self setNeedsDisplay:YES];
 	[mParentStatusItem popUpStatusItemMenu:[mParentStatusItem menu]];
+    // apparently the above blocks?
+    mHighlighted = NO;
+    [self setNeedsDisplay:YES];
+}
+
+- (void)mouseUp:(NSEvent *)theEvent
+{
+    mHighlighted = NO;
+    [self setNeedsDisplay:YES];
 }
 
 #pragma mark -
