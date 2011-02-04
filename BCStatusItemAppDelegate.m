@@ -18,14 +18,15 @@
 	NSImage *image = [NSImage imageNamed:@"status"];
 	NSImage *alternateImage = [NSImage imageNamed:@"status-selected"];
 	statusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:[image size].width+40] retain];
-	[statusItem setMenu:statusMenu];
-	[statusItem setImage:image];
-	[statusItem setAlternateImage:alternateImage];
-	[statusItem setHighlightMode:YES];
+	
+	[statusItem setupView];
 	
 	[statusItem setTitle:@"Test"];
-
-	[statusItem setupView];
+	[statusItem setMenu:statusMenu];
+	[statusItem setHighlightMode:YES];
+	
+	[statusItem setImage:image];
+	[statusItem setAlternateImage:alternateImage];
 	
 	[statusItem setViewDelegate:self];
 	[[statusItem view] registerForDraggedTypes:[NSArray arrayWithObjects:NSFilenamesPboardType, nil]];

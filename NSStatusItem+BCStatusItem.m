@@ -24,7 +24,6 @@
 //	[view setAlternateImage:[self alternateImage]];
 //	[view setAttributedTitle:[self attributedTitle]];
 //	[view setDoesHighlight:[self highlightMode]];
-	
 	[self setView:view];
 	
 	// view becomes delegate for highlighting purposes, this isn't ideal for all cases
@@ -60,6 +59,7 @@
 #pragma mark Overrides
 
 // our view replaces all drawing/etc. of NSStatusItem so we forward any related changes on to it
+// TODO: we should do method swizzling or something to not block original methods
 
 - (void)setImage:(NSImage *)image
 {

@@ -19,16 +19,16 @@
 
 @interface BCStatusItemView : NSView<NSMenuDelegate> // TODO: ifdef this for 10.6 only
 {
-	NSStatusItem *mParentStatusItem;
-	NSMenu *mMenu;
+	NSStatusItem *parentStatusItem;
+	NSMenu *menu;
 	
-	BOOL mHighlighted;
-	BOOL mDoesHighlight;
+	BOOL highlighted;
+	BOOL doesHighlight;
 	
-	NSImage *mImage;
-	NSImage *mAlternateImage;
-	NSString *mTitle;
-	NSAttributedString *mAttributedTitle;
+	NSImage *image;
+	NSImage *alternateImage;
+	NSString *title;
+	NSAttributedString *attributedTitle;
 	
 	id<BCStatusItemViewDelegate> delegate;
 }
