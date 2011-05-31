@@ -15,3 +15,7 @@ Unfinished
 * Action/doubleAction support
 * Possible convenient way of adding an 'accessory view'
 * See issues for more
+
+License
+----------------
+BSD license, See LICENSE.md 
