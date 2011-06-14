@@ -41,6 +41,7 @@
 		self.image = nil;
 		self.alternateImage = nil;
 		self.delegate = nil;
+        self.enabled = YES;
 	}
 	return self;
 }
