@@ -25,7 +25,7 @@
 /**
  * Convenience method which gets the window frame for the custom NSStatusItem view
  */
-- (NSRect)frame;
+@property (nonatomic, readonly) NSRect frame;
 
 /**
  * Sets the view's delegate, convenience method 
