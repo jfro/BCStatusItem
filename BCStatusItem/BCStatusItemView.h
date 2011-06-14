@@ -39,6 +39,7 @@
 @property (copy, nonatomic) NSImage *image;
 @property (copy, nonatomic) NSImage *alternateImage;
 @property (assign, nonatomic) id<BCStatusItemViewDelegate> delegate;
+@property (nonatomic, getter = isEnabled) BOOL enabled;
 
 + (BCStatusItemView *)viewWithStatusItem:(NSStatusItem *)statusItem;
 - (id)initWithStatusItem:(NSStatusItem *)statusItem;

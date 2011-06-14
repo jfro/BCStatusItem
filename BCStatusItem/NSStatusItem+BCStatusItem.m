@@ -86,4 +86,12 @@
 	[(BCStatusItemView *)[self view] setAttributedTitle:attrTitle];
 }
 
+- (BOOL)isEnabled {
+    return [(BCStatusItemView *)[self view] isEnabled];
+}
+
+- (void)setEnabled:(BOOL)enabled {
+    [(BCStatusItemView *)[self view] setEnabled:enabled];
+}
+
 @end
