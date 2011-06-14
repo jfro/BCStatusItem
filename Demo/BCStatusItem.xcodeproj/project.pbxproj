@@ -9,23 +9,18 @@
 /* Begin PBXBuildFile section */
 		02252164115E75CD006F3538 /* status.png in Resources */ = {isa = PBXBuildFile; fileRef = 02252162115E75CD006F3538 /* status.png */; };
 		02252165115E75CD006F3538 /* status-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 02252163115E75CD006F3538 /* status-selected.png */; };
-		022B0A461157B3C700385F13 /* NSStatusItem+BCStatusItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 022B0A451157B3C700385F13 /* NSStatusItem+BCStatusItem.m */; };
-		022B0A4B1157B3D400385F13 /* BCStatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 022B0A4A1157B3D400385F13 /* BCStatusItemView.m */; };
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* BCStatusItemAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* BCStatusItemAppDelegate.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		B0BD954713A6FD30003B3689 /* BCStatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = B0BD954413A6FD30003B3689 /* BCStatusItemView.m */; };
+		B0BD954813A6FD30003B3689 /* NSStatusItem+BCStatusItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B0BD954613A6FD30003B3689 /* NSStatusItem+BCStatusItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		02252162115E75CD006F3538 /* status.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = status.png; sourceTree = "<group>"; };
 		02252163115E75CD006F3538 /* status-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "status-selected.png"; sourceTree = "<group>"; };
-		022B0A441157B3C700385F13 /* NSStatusItem+BCStatusItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSStatusItem+BCStatusItem.h"; sourceTree = "<group>"; };
-		022B0A451157B3C700385F13 /* NSStatusItem+BCStatusItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSStatusItem+BCStatusItem.m"; sourceTree = "<group>"; };
-		022B0A491157B3D400385F13 /* BCStatusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCStatusItemView.h; sourceTree = "<group>"; };
-		022B0A4A1157B3D400385F13 /* BCStatusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCStatusItemView.m; sourceTree = "<group>"; };
-		02FCFF3611A6051500992919 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
@@ -38,6 +33,11 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		8D1107310486CEB800E47090 /* BCStatusItem-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "BCStatusItem-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* BCStatusItem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BCStatusItem.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0BD953C13A6FCD6003B3689 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		B0BD954313A6FD30003B3689 /* BCStatusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCStatusItemView.h; sourceTree = "<group>"; };
+		B0BD954413A6FD30003B3689 /* BCStatusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCStatusItemView.m; sourceTree = "<group>"; };
+		B0BD954513A6FD30003B3689 /* NSStatusItem+BCStatusItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSStatusItem+BCStatusItem.h"; sourceTree = "<group>"; };
+		B0BD954613A6FD30003B3689 /* NSStatusItem+BCStatusItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSStatusItem+BCStatusItem.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,17 +59,6 @@
 				256AC3D90F4B6AC300CF3369 /* BCStatusItemAppDelegate.m */,
 			);
 			name = TestApp;
-			sourceTree = "<group>";
-		};
-		080E96DDFE201D6D7F000001 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				022B0A441157B3C700385F13 /* NSStatusItem+BCStatusItem.h */,
-				022B0A451157B3C700385F13 /* NSStatusItem+BCStatusItem.m */,
-				022B0A491157B3D400385F13 /* BCStatusItemView.h */,
-				022B0A4A1157B3D400385F13 /* BCStatusItemView.m */,
-			);
-			name = Classes;
 			sourceTree = "<group>";
 		};
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
@@ -101,8 +90,8 @@
 		29B97314FDCFA39411CA2CEA /* BCStatusItem */ = {
 			isa = PBXGroup;
 			children = (
-				02FCFF3611A6051500992919 /* README.markdown */,
-				080E96DDFE201D6D7F000001 /* Classes */,
+				B0BD953C13A6FCD6003B3689 /* README.md */,
+				B0BD954213A6FD30003B3689 /* BCStatusItem */,
 				02FCFEC711A5F68200992919 /* TestApp */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -140,6 +129,18 @@
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B0BD954213A6FD30003B3689 /* BCStatusItem */ = {
+			isa = PBXGroup;
+			children = (
+				B0BD954313A6FD30003B3689 /* BCStatusItemView.h */,
+				B0BD954413A6FD30003B3689 /* BCStatusItemView.m */,
+				B0BD954513A6FD30003B3689 /* NSStatusItem+BCStatusItem.h */,
+				B0BD954613A6FD30003B3689 /* NSStatusItem+BCStatusItem.m */,
+			);
+			name = BCStatusItem;
+			path = ../BCStatusItem;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,8 +210,8 @@
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				256AC3DA0F4B6AC300CF3369 /* BCStatusItemAppDelegate.m in Sources */,
-				022B0A461157B3C700385F13 /* NSStatusItem+BCStatusItem.m in Sources */,
-				022B0A4B1157B3D400385F13 /* BCStatusItemView.m in Sources */,
+				B0BD954713A6FD30003B3689 /* BCStatusItemView.m in Sources */,
+				B0BD954813A6FD30003B3689 /* NSStatusItem+BCStatusItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
