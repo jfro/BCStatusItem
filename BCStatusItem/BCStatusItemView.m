@@ -191,10 +191,8 @@
 
 #pragma mark -
 
-- (void)drawRect:(NSRect)dirtyRect
+- (void)drawRect:(NSRect)dirtyRect 
 {
-	[[NSColor redColor] set];
-	NSFrameRect([self bounds]);
 	// TODO: handle image + title, centering the combined rect with image on left
 	NSImage *drawnImage = nil;
 	if(highlighted && [self doesHighlight])
