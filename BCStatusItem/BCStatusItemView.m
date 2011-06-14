@@ -20,6 +20,7 @@
 @synthesize image;
 @synthesize alternateImage;
 @synthesize delegate;
+@synthesize enabled;
 
 + (BCStatusItemView *)viewWithStatusItem:(NSStatusItem *)statusItem
 {
@@ -157,12 +158,14 @@
 - (void)mouseDown:(NSEvent *)theEvent
 {
 	// TODO: implement other behaviors like support for target/action & doubleAction
-    highlighted = YES;
-    [self setNeedsDisplay:YES];
-	[parentStatusItem popUpStatusItemMenu:[parentStatusItem menu]];
-    // apparently the above blocks?
-    highlighted = NO;
-    [self setNeedsDisplay:YES];
+    if ([parentStatusItem isEnabled]) {
+        highlighted = YES;
+        [self setNeedsDisplay:YES];
+        [parentStatusItem popUpStatusItemMenu:[parentStatusItem menu]];
+        // apparently the above blocks?
+        highlighted = NO;
+        [self setNeedsDisplay:YES];  
+    }
 }
 
 - (void)mouseUp:(NSEvent *)theEvent
