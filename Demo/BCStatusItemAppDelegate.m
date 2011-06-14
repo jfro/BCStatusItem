@@ -17,7 +17,7 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 	NSImage *image = [NSImage imageNamed:@"status"];
 	NSImage *alternateImage = [NSImage imageNamed:@"status-selected"];
-	statusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:[image size].width+40] retain];
+	statusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];
 	
 	[statusItem setupView];
 	

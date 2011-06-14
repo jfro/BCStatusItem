@@ -63,7 +63,8 @@
     if([parentStatusItem length] == NSVariableStatusItemLength)
     {
         NSRect newFrame = [self frame];
-        newFrame.size.width = [[self image] size].width + 8; // 12 px padding, 6 on each side maybe? not sure what might be the usual
+        newFrame.size.width = [[self image] size].width + [self.attributedTitle size].width + 8;
+        // 12 px padding, 6 on each side maybe? not sure what might be the usual
         [self setFrame:newFrame];
     }
 }
@@ -115,15 +116,22 @@
 		
 		NSFont *font = [NSFont menuBarFontOfSize:[NSFont systemFontSize] + 2.0f]; // +2 seemed to make it look right, maybe missed a font method for menu?
 		NSColor *color = [NSColor controlTextColor];
+        NSMutableParagraphStyle *paragraphStyle = [[[NSMutableParagraphStyle alloc] init] autorelease];
+        [paragraphStyle setAlignment:NSCenterTextAlignment];
+        
 		NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
 							   font, NSFontAttributeName,
 							   color, NSForegroundColorAttributeName,
+                                paragraphStyle, NSParagraphStyleAttributeName,
 							   nil];
+        
 		NSAttributedString *attrTitle = [[NSAttributedString alloc] initWithString:self.title attributes:attributes];
 		self.attributedTitle = attrTitle;
 		[attrTitle release];
 		
 		[self setNeedsDisplay:YES];
+        
+        [self _resizeToFitIfNeeded];
 	}
 }
 
