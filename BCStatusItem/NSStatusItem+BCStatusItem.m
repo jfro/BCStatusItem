@@ -70,7 +70,18 @@
 {
 	[(BCStatusItemView *)[self view] setAlternateImage:image];
 }
-
+- (void)setDragImage:(NSImage *)image
+{
+	[(BCStatusItemView *)[self view] setDragImage:image];
+}
+- (void)setOriginalImage:(NSImage *)image
+{
+	[(BCStatusItemView *)[self view] setOriginalImage:image];
+}
+- (void)setAnimFrames:(NSArray *)animFrames
+{
+	[(BCStatusItemView *)[self view] setAnimFrames:animFrames];
+}
 - (void)setHighlightMode:(BOOL)highlightMode
 {
 	[(BCStatusItemView *)[self view] setDoesHighlight:highlightMode];
@@ -93,5 +104,13 @@
 - (void)setEnabled:(BOOL)enabled {
     [(BCStatusItemView *)[self view] setEnabled:enabled];
 }
+- (void) startAnimation {
+  [(BCStatusItemView *)[self view] startAnimation];
+}
+- (void) stopAnimation {
+  [(BCStatusItemView *)[self view] stopAnimation];
+}
+
+
 
 @end

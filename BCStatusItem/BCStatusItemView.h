@@ -24,25 +24,42 @@
 	
 	BOOL highlighted;
 	BOOL doesHighlight;
+  BOOL isDragged;
 	
 	NSImage *image;
 	NSImage *alternateImage;
+  NSImage *dragImage;
+  NSImage *originalImage;
+  
 	NSString *title;
 	NSAttributedString *attributedTitle;
-	
+  NSArray *animFrames;
+  NSThread *animThread;
+  
 	id<BCStatusItemViewDelegate> delegate;
 }
 
 @property (assign, nonatomic) BOOL doesHighlight;
+@property (assign, nonatomic) BOOL isDragged;
 @property (copy, nonatomic) NSString *title;
 @property (copy, nonatomic) NSAttributedString *attributedTitle;
 @property (copy, nonatomic) NSImage *image;
+@property (copy, nonatomic) NSImage *originalImage;
 @property (copy, nonatomic) NSImage *alternateImage;
+@property (copy, nonatomic) NSImage *dragImage;
+@property (copy, nonatomic) NSArray *animFrames;
+
+
 @property (assign, nonatomic) id<BCStatusItemViewDelegate> delegate;
 @property (nonatomic, getter = isEnabled) BOOL enabled;
 
 + (BCStatusItemView *)viewWithStatusItem:(NSStatusItem *)statusItem;
 - (id)initWithStatusItem:(NSStatusItem *)statusItem;
+
+- (void) startAnimation;
+- (void) stopAnimation;
+
+
 
 //- (void)registerForDraggedTypes:(NSArray *)types;
 

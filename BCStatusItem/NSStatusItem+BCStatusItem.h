@@ -22,6 +22,10 @@
 - (void)setDraggingTypes:(NSArray *)types;
 - (NSArray *)draggingTypes;
 
+- (void)setDragImage:(NSImage *)image;
+- (void)setOriginalImage:(NSImage *)image;
+- (void)setAnimFrames:(NSArray *)animFrames;
+
 /**
  * Convenience method which gets the window frame for the custom NSStatusItem view
  */
@@ -31,5 +35,8 @@
  * Sets the view's delegate, convenience method 
  */
 - (void)setViewDelegate:(id)delegate;
+- (void) startAnimation;
+- (void) stopAnimation;
+
 
 @end
