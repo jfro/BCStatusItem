@@ -15,10 +15,14 @@
 @implementation BCStatusItemView
 
 @synthesize doesHighlight;
+@synthesize isDragged;
+@synthesize animFrames;
 @synthesize title;
 @synthesize attributedTitle;
 @synthesize image;
+@synthesize dragImage;
 @synthesize alternateImage;
+@synthesize originalImage;
 @synthesize delegate;
 @synthesize enabled;
 
@@ -38,8 +42,10 @@
 		self.title = nil;
 		self.attributedTitle = nil;
 		self.doesHighlight = NO;
+    self.isDragged = NO;
 		self.image = nil;
 		self.alternateImage = nil;
+    self.animFrames = nil;
 		self.delegate = nil;
         self.enabled = YES;
 	}
@@ -53,7 +59,11 @@
 	self.attributedTitle = nil;
 	self.image = nil;
 	self.alternateImage = nil;
+  self.dragImage = nil;
+  self.animFrames = nil;
 	self.delegate = nil;
+  self.originalImage = nil;
+  
 	parentStatusItem = nil; // we only had weak reference
 	[super dealloc];
 }
@@ -86,6 +96,14 @@
 
 #pragma mark -
 
+- (void) setAnimFrames:(NSArray *)newAnimFrames {
+  if (newAnimFrames != animFrames) {
+    [animFrames release];
+    animFrames = [newAnimFrames copy];
+    [self setNeedsDisplay:YES];
+  }
+}
+
 - (void)setImage:(NSImage *)newImage
 {
 	if(newImage != image)
@@ -95,6 +113,36 @@
         [self _resizeToFitIfNeeded];
 		[self setNeedsDisplay:YES];
 	}
+}
+
+- (void)setOriginalImage:(NSImage *)newImage
+{
+	if(newImage != originalImage)
+	{
+		[originalImage release];
+		originalImage = [newImage copy];
+    [self _resizeToFitIfNeeded];
+		[self setNeedsDisplay:YES];
+	}
+}
+
+- (void)setDragImage:(NSImage *)newDragImage
+{
+	if(newDragImage != dragImage)
+	{
+		[dragImage release];
+		dragImage = [newDragImage copy];
+		[self setNeedsDisplay:YES];
+	}
+
+}
+
+-(NSImage *)getDragImage {
+  return dragImage;
+}
+
+-(NSImage *)getOriginalImage {
+  return originalImage;
 }
 
 - (void)setAlternateImage:(NSImage *)newAltImage
@@ -210,9 +258,15 @@
 		[NSBezierPath fillRect:[self bounds]];
 		drawnImage = self.alternateImage;
 	}
-	else
-		drawnImage = self.image;
-	
+	else {
+    if (isDragged) {
+      drawnImage = self.dragImage;
+    }
+    else {
+      drawnImage = self.image;
+    }
+	}
+  
 	NSRect centeredRect = NSMakeRect(0, 0, 0, 0);
 	if(drawnImage) {
 		centeredRect = NSMakeRect(0, 0, [drawnImage size].width, [drawnImage size].height);
@@ -256,22 +310,95 @@
 
 - (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)sender
 {
+  isDragged = YES;
+  [self setNeedsDisplay:YES];
 	return [delegate statusItemView:self draggingEntered:sender];
 }
 
 - (void)draggingExited:(id <NSDraggingInfo>)sender
 {
+  isDragged = NO;
+  [self setNeedsDisplay:YES];
 	[delegate statusItemView:self draggingExited:sender];
 }
 
 - (BOOL)prepareForDragOperation:(id <NSDraggingInfo>)sender
-{	
+{
+  
 	return [delegate statusItemView:self prepareForDragOperation:sender];
 }
 
 - (BOOL)performDragOperation:(id <NSDraggingInfo>)sender
 {
+  isDragged = NO;
+  [self setNeedsDisplay:YES];
 	return [delegate statusItemView:self performDragOperation:sender];
 }
+
+
+
+
+- (void) startAnimation {
+  animThread = [[NSThread alloc] initWithTarget:self selector:@selector(animationLoop) object:nil];
+  [animThread start];
+  
+}
+
+- (void) stopAnimation {
+  NSMutableDictionary* threadDict = [animThread threadDictionary];
+  [threadDict setValue:[NSNumber numberWithBool:YES] forKey:@"ThreadShouldExitNow"];
+}
+
+- (void) animationLoop {
+  
+  BOOL moreWorkToDo = YES;
+  BOOL exitNow = NO;
+  NSRunLoop* runLoop = [NSRunLoop currentRunLoop];
+  
+    // Add the exitNow BOOL to the thread dictionary.
+  NSMutableDictionary* threadDict = [[NSThread currentThread] threadDictionary];
+  [threadDict setValue:[NSNumber numberWithBool:exitNow] forKey:@"ThreadShouldExitNow"];
+  
+  int index = 0;
+  
+  
+  
+  while (moreWorkToDo && !exitNow)
+  {
+    NSImage *aframe = [NSImage imageNamed:[animFrames objectAtIndex:index]];
+    //NSLog(@"%@", aframe);
+    [self setImage:aframe];
+    
+    
+    
+    [self setNeedsDisplay:YES];
+    index++;
+    if (index >= [animFrames count]) {
+     index = 0;
+    }
+    
+      // Check to see if an input source handler changed the exitNow value.
+    exitNow = [[threadDict valueForKey:@"ThreadShouldExitNow"] boolValue];
+    sleep(1);
+  }
+  
+  NSImage *aframe = [NSImage imageNamed:[animFrames lastObject]];
+  [self setImage:aframe];
+  [self setNeedsDisplay:YES];
+  
+  sleep(3);
+  
+  
+  self.image = self.originalImage;
+  [self setNeedsDisplay:YES];
+  
+  [animThread cancel];
+  [animThread release];
+  
+  
+}
+
+
+
 
 @end
