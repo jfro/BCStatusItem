@@ -97,6 +97,11 @@
 	[(BCStatusItemView *)[self view] setAttributedTitle:attrTitle];
 }
 
+- (void)setToolTip:(NSString *)toolTip
+{
+	[(BCStatusItemView *)[self view] setToolTip:toolTip];
+}
+
 - (BOOL)isEnabled {
     return [(BCStatusItemView *)[self view] isEnabled];
 }
